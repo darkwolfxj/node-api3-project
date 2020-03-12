@@ -7,8 +7,8 @@ const posts = require("../posts/postDb")
 router.post('/', (req, res) => {
     // do your magic!
     users.insert(req.body)
-        .then(() => res.status(201).json({ message: "The post was created successfully." }))
-        .catch(() => res.status(400).json({ message: "There was an error creating the post." }))
+        .then(() => res.status(201).json({ message: "The user was created successfully." }))
+        .catch(() => res.status(400).json({ message: "There was an error creating the user." }))
 });
 
 router.post('/:id/posts', validateUserId, validatePost, (req, res) => {
@@ -52,7 +52,7 @@ router.put('/:id', validateUserId, (req, res) => {
     // do your magic!
     console.log(req.body, req.user)
     users.update(req.user, req.body)
-        .then(user => res.status(201).json(user))
+        .then(() => res.status(201).json(req.body))
         .catch(() => res.status(400).json({ message: "There was an error updating user." }))
 });
 
